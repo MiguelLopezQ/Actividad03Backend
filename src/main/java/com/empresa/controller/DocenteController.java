@@ -58,11 +58,12 @@ public class DocenteController {
 	public ResponseEntity<Map<String, Object>> listaDocenteNombreDniUbigeo(
 			@RequestParam(name="nombre",required = false,defaultValue = "") String nombre,
 			@RequestParam(name="dni",required = false,defaultValue = "") String dni,
-			@RequestParam(name="idUbigeo",required = false,defaultValue = "-1") int idUbigeo
+			@RequestParam(name="idUbigeo",required = false,defaultValue = "-1") int idUbigeo,
+			@RequestParam(name="estado",required = false,defaultValue = "1") int estado
 			){
 		Map<String, Object> salida = new HashMap<>();
 			try {
-				List<Docente> lista =docenteService.listaDocenteNombreDniUbigeo("%"+nombre+"%", dni, idUbigeo);
+				List<Docente> lista =docenteService.listaDocenteNombreDniUbigeo("%"+nombre+"%", dni, idUbigeo,estado);
 				if(CollectionUtils.isEmpty(lista)) {
 					salida.put("mensaje", "No existe datos para mostrar");
 				}else {

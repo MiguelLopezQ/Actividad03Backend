@@ -12,8 +12,8 @@ public interface DocenteRepository extends JpaRepository<Docente, Integer> {
 	//Query JPQL
 	//Es un SQL no con tablas sino con las clases @Entity
 	
-	@Query("select d from Docente d where (?1 is '' or d.nombre like ?1) and (?2 is '' or d.dni = ?2) and (?3 is -1 or d.ubigeo.idUbigeo = ?3) ")
-	public List<Docente> listaDocenteNombreDniUbigeo(String nombre, String dni, int idUbigeo);
+	@Query("select d from Docente d where (?1 is '' or d.nombre like ?1) and (?2 is '' or d.dni = ?2) and (?3 is -1 or d.ubigeo.idUbigeo = ?3) and d.estado = ?4 ")
+	public List<Docente> listaDocenteNombreDniUbigeo(String nombre, String dni, int idUbigeo,int estado);
 
 }
 
